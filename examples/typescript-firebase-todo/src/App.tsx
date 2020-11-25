@@ -7,7 +7,7 @@ import 'firebase/database'
 import * as firebaseui from 'firebaseui'
 import 'firebaseui/dist/firebaseui.css' 
 
-import { HomebaseProvider, useClient, useTransact, useQuery, useEntity, Transaction} from 'homebase-react'
+import { HomebaseProvider, useClient, useTransact, useQuery, useEntity, Transaction, Entity} from 'homebase-react'
 
 export default function App() {
   return (
@@ -244,7 +244,7 @@ const Todo = React.memo(({ id } : {id : number}) => {
   )
 })
 
-const TodoCheck = ({ todo } : {todo: any}) => {
+const TodoCheck = ({ todo } : {todo: Entity}) => {
   const [transact] = useTransact()
   return (
     <input 
@@ -256,7 +256,7 @@ const TodoCheck = ({ todo } : {todo: any}) => {
   )
 }
 
-const TodoName = ({ todo } : {todo: any}) => {
+const TodoName = ({ todo } : {todo: Entity}) => {
   const [transact] = useTransact()
   return (
     <input 
@@ -270,7 +270,7 @@ const TodoName = ({ todo } : {todo: any}) => {
   )
 }
 
-const TodoProject = ({ todo } : {todo: any}) => {
+const TodoProject = ({ todo } : {todo: Entity}) => {
   const [transact] = useTransact()
   return (
     <EntitySelect
@@ -282,7 +282,7 @@ const TodoProject = ({ todo } : {todo: any}) => {
   )
 }
 
-const TodoOwner = ({ todo }: { todo: any}) => {
+const TodoOwner = ({ todo }: { todo: Entity}) => {
   const [transact] = useTransact()
   return (
     <EntitySelect 
@@ -294,7 +294,7 @@ const TodoOwner = ({ todo }: { todo: any}) => {
   )
 }
 
-const TodoDelete = ({ todo }: {todo: any}) => {
+const TodoDelete = ({ todo }: {todo: Entity}) => {
   const [transact] = useTransact()
   return (
     <button onClick={() => transact([['retractEntity', todo.get('id')]])}>

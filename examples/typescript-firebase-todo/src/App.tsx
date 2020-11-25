@@ -222,7 +222,7 @@ const TodoList = () => {
 // this component stays disconnected from the useQuery in the parent TodoList. 
 // useEntity creates a separate scope for every Todo so changes to TodoList
 // or sibling Todos don't trigger unnecessary re-renders.
-const Todo = React.memo(({ id } : {id : any}) => {
+const Todo = React.memo(({ id } : {id : number}) => {
   const [todo] = useEntity(id)
   return (
     <div>
